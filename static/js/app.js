@@ -1,24 +1,22 @@
 // Load the data from the URL
-d3.json("https://2u-data-curriculum-team.s3.amazonaws.com/dataviz-classroom/v1.1/14-Interactive-Web-Visualizations/02-Homework/samples.json").then(data => {
+d3.csv("country_gdp_death_rate_risks.csv").then(data => {
     // Populate the dropdown menu
     var dropdownMenu = d3.select("#sampleDropdown");
-    data.names.forEach(name => {
-        dropdownMenu.append("option").text(name).property("value", name);
-    });
+    console.log(data);
 
     // Initial plot
-    var firstSample = data.names[0];
-    updateBarChart(firstSample, data);
-    updateBubbleChart(firstSample, data);
-    updateMetadata(firstSample, data);
+//     var firstSample = data.names[0];
+//     updateBarChart(firstSample, data);
+//     updateBubbleChart(firstSample, data);
+//     updateMetadata(firstSample, data);
 
-    // Event listener for dropdown change
-    dropdownMenu.on("change", function() {
-        var selectedSample = this.value;
-        updateBarChart(selectedSample, data);
-        updateBubbleChart(selectedSample, data);
-        updateMetadata(selectedSample, data);
-    });
+//     // Event listener for dropdown change
+//     dropdownMenu.on("change", function() {
+//         var selectedSample = this.value;
+//         updateBarChart(selectedSample, data);
+//         updateBubbleChart(selectedSample, data);
+//         updateMetadata(selectedSample, data);
+//     });
 });
 
 // Function to update the bar chart
