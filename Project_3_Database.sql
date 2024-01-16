@@ -1,5 +1,5 @@
 ﻿
-CREAT TABLE "id_table" (
+CREATE TABLE "id_table" (
 	ID INT PRIMARY KEY,
 	"Country_name" VARCHAR(100),
 	"Year" INT
@@ -84,5 +84,37 @@ CREATE TABLE "population_and_demography_clean" (
     "Population_aged_90_to_99_years" BIGINT,
     "Population_older_than_100_years" FLOAT(53)
 	);
+
+
+SELECT * FROM death_rate_clean;
+
+SELECT * FROM death_risks_clean;
+
+SELECT * FROM gdp_clean;
+
+SELECT * FROM id_table;
+
+SELECT * FROM population_and_demography_clean;
+
+SELECT gdp."Country_name", gdp."Year", gdp."GDP_per_capita",  dr."Death_rate", drc."Diet_high_in_sodium", drc."Diet_low_in_whole_grains", drc."Alcohol_use", drc."Diet_low_in_fruits", drc."Diet_low_in_nuts_and_seeds",
+drc."Diet_low_in_vegetables", drc."Low_physical_activity", drc."Drug_Use", drc."High_body_mass_index"
+FROM gdp_clean gdp
+INNER JOIN death_rate_clean dr
+ON gdp."Country_name" = dr."Country_name" AND gdp."Year" = dr."Year"
+INNER JOIN death_risks_clean drc
+ON drc."Country_name" = dr."Country_name" AND drc."Year" = dr."Year";
+
+SELECT dr."Country_name", dr."Year", dr."Death_rate", drc."Outdoor_air_pollution", drc."Secondhand_smoke", drc."Household_air_pollution", drc."Smoking", drc."Air_pollution"
+FROM death_rate_clean dr
+INNER JOIN death_risks_clean drc
+ON dr."Country_name" = drc."Country_name" AND dr."Year" = drc."Year"
+INNER JOIN population_and_demography_clean pd
+ON pd."Country_name" = drc."Country_name" AND pd."Year" = drc."Year";
+
+
+SELECT dr."Country_name", dr."Year", dr."Death_rate", drc."Unsafe_water_source", drc."Unsafe_sanitation", drc."No_handwash_access"
+FROM death_rate_clean dr
+INNER JOIN death_risks_clean drc
+ON dr."Country_name" = drc."Country_name" AND dr."Year" = drc."Year";
 
 
