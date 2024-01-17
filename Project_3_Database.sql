@@ -104,7 +104,13 @@ ON gdp."Country_name" = dr."Country_name" AND gdp."Year" = dr."Year"
 INNER JOIN death_risks_clean drc
 ON drc."Country_name" = dr."Country_name" AND drc."Year" = dr."Year";
 
-SELECT dr."Country_name", dr."Year", dr."Death_rate", drc."Outdoor_air_pollution", drc."Secondhand_smoke", drc."Household_air_pollution", drc."Smoking", drc."Air_pollution"
+SELECT dr."Country_name", dr."Year", dr."Death_rate", drc."Outdoor_air_pollution", drc."Secondhand_smoke", drc."Household_air_pollution", drc."Smoking", drc."Air_pollution",
+pd."Population", pd."Population_of_children_under_the_age_of_1", pd."Population_of_children_under_the_age_of_5", pd."Population_of_children_under_the_age_of_15",
+pd."Population_under_the_age_of_25", pd."Population_aged_15_to_64_years", pd."Population_older_than_15_years", pd."Population_older_than_18_years",
+pd."Population_at_age_1", pd."Population_aged_1_to_4_years", pd."Population_aged_5_to_9_years", pd."Population_aged_10_to_14_years", pd."Population_aged_15_to_19_years",
+pd."Population_aged_20_to_29_years", pd."Population_aged_30_to_39_years", pd."Population_aged_40_to_49_years", pd."Population_aged_50_to_59_years",
+pd."Population_aged_60_to_69_years", pd."Population_aged_70_to_79_years", pd."Population_aged_80_to_89_years", pd."Population_aged_90_to_99_years",
+pd."Population_older_than_100_years"
 FROM death_rate_clean dr
 INNER JOIN death_risks_clean drc
 ON dr."Country_name" = drc."Country_name" AND dr."Year" = drc."Year"
