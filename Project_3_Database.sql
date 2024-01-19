@@ -124,3 +124,11 @@ INNER JOIN death_risks_clean drc
 ON dr."Country_name" = drc."Country_name" AND dr."Year" = drc."Year";
 
 
+SELECT gdp."Country_name", gdp."Year", gdp."GDP_per_capita",  dr."Death_rate", drc."Diet_high_in_sodium", drc."Diet_low_in_whole_grains", drc."Alcohol_use", drc."Diet_low_in_fruits", drc."Diet_low_in_nuts_and_seeds",
+drc."Diet_low_in_vegetables", drc."Low_physical_activity", drc."Drug_Use", drc."High_body_mass_index"
+FROM gdp_clean gdp
+INNER JOIN death_rate_clean dr
+ON gdp."Country_name" = dr."Country_name" AND gdp."Year" = dr."Year"
+INNER JOIN death_risks_clean drc
+ON drc."Country_name" = dr."Country_name" AND drc."Year" = dr."Year"
+WHERE dr."Year" = '2010';

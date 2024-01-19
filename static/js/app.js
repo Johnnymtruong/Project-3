@@ -1,105 +1,191 @@
-let baseMap = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-});
+//read in the json file
 
-let map = L.map("map", {
-    center: [45, -10],
-    zoom: 2
-});
+const url = "country_gdp_death_2000.json";
 
-baseMap.addTo(map);
+function main() {
 
-let url = "country_gdp_death_rate_risks.json";
+    let dropdownMenu = d3.select("#selDataset")
+
+    // Fetch the JSON data and console log iC
+    d3.json(url).then(function (data) {
+        console.log(data);
+        let random = data
+        for (let i = 0; i < random.length; i++) {
+            dropdownMenu.append("option").text(random[i].Country_name).property("value", random[i].ID);
+
+        };
+        //testing the data reference
+        console.log(data[0].Country_name);
+
+        let firstItem = random[0];
+        makeCharts(firstItem);
+        hugeData(firstItem);
+    });
+};
+
+function optionChanged(subject) {
+    makeCharts(subject);
+    hugeData(subject);
+    console.log(subject);
 
 
-// Load the data from the URL
-d3.json(url).then(data => {
-    
-    console.log(data)});
+};
 
-    
-    
-    
-    
-    // Populate the dropdown menu
-    // var dropdownMenu = d3.select("#sampleDropdown");
-    // data.names.forEach(name => {
-    //     dropdownMenu.append("option").text(name).property("value", name);
-    // });
+//set function to update the drop down menu and its data
+function hugeData(sample) {
+    d3.json(url).then(function (data) {
+        let majordata = data
+        let data1 = majordata.filter(obj => obj.ID == sample);
+        let dataResult = data1[0];
+        let panel = d3.select("#sample-data");
+        panel.html("");
+        for (key in dataResult) {
+            panel.append("h6").text(`${key.toUpperCase()}: ${dataResult[key]}`)
 
-//     // Initial plot
-//     var firstSample = data.names[0];
-//     updateBarChart(firstSample, data);
-//     updateBubbleChart(firstSample, data);
-//     updateMetadata(firstSample, data);
+        }
+    })
+};
 
-//     // Event listener for dropdown change
-//     dropdownMenu.on("change", function() {
-//         var selectedSample = this.value;
-//         updateBarChart(selectedSample, data);
-//         updateBubbleChart(selectedSample, data);
-//         updateMetadata(selectedSample, data);
-//     });
-// });
 
-// // Function to update the bar chart
-// function updateBarChart(sampleId, data) {
-//     var sampleData = data.samples.filter(sample => sample.id === sampleId)[0];
-//     var otuIds = sampleData.otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`);
-//     var sampleValues = sampleData.sample_values.slice(0, 10);
-//     var otuLabels = sampleData.otu_labels.slice(0, 10);
 
-//     var trace = {
-//         x: sampleValues,
-//         y: otuIds,
-//         type: "bar",
-//         orientation: "h",
-//         text: otuLabels
-//     };
+main();
 
-//     var layout = {
-//         title: "Top 10 OTUs Found in Individual",
-//         xaxis: { title: "Sample Values" },
-//         yaxis: { title: "OTU IDs" }
-//     };
+function makeCharts(sample) {
+    d3.json(url).then(function (data) {
+        // data = [{},{},{}];
+        //.map function
 
-//     Plotly.newPlot("barChart", [trace], layout);
-// }
+        let countryList = data.map(row => row.Country_name);
+        let year = data.map(row => row.Year);
+        let gdp = data.map(row => row.GDP_per_capita);
+        let deathRate = data.map(row => row.Death_rate);
+        let highSodium = data.map(row => row.Diet_high_in_sodium);
+        let lowGrains = data.map(row => row.Diet_low_in_whole_grains);
+        let alcohol = data.map(row => row.Alcohol_use);
+        let lowFruits = data.map(row => row.Diet_low_in_fruits);
+        let lowSeeds = data.map(row => row.Diet_low_in_nuts_and_seeds);
+        let lowVeggies = data.map(row => row.Diet_low_in_vegetables);
+        let lowActivity = data.map(row => row.Low_physical_activity);
+        let drugUse = data.map(row => row.Drug_Use);
+        let highMass = data.map(row => row.High_body_mass_index);
 
-// // Function to update the bubble chart
-// function updateBubbleChart(sampleId, data) {
-//     var sampleData = data.samples.filter(sample => sample.id === sampleId)[0];
-//     var otuIds = sampleData.otu_ids;
-//     var sampleValues = sampleData.sample_values;
-//     var otuLabels = sampleData.otu_labels;
+        let deathRisks = [highSodium, lowGrains, alcohol, lowFruits, lowSeeds, lowVeggies, lowActivity, drugUse, highMass];
+            
+  
 
-//     var trace = {
-//         x: otuIds,
-//         y: sampleValues,
-//         text: otuLabels,
-//         mode: 'markers',
-//         marker: {
-//             size: sampleValues,
-//             color: otuIds
-//         }
-//     };
+        console.log("this is country:", countryList);
+        console.log("this is year:", year);
+        console.log("this is GDP:", gdp);
+        console.log("this is Death Rate:", deathRate);
+        console.log("this is High Sodium Diet:", highSodium);
+        console.log("this is Low Grains Diet:", lowGrains);
+        console.log("this is Alcohol:", alcohol);
+        console.log("this is Low Fruits Diet:", lowFruits);
+        console.log("this is Low Seeds Diet:", lowSeeds);
+        console.log("this is Low Veggies Diet:", lowVeggies);
+        console.log("this is Low Activity:", lowActivity);
+        console.log("this is Druge Use:", drugUse);
+        console.log("this is High Body Mass:", highMass);
 
-//     var layout = {
-//         title: 'OTU ID vs Sample Values',
-//         xaxis: { title: "OTU ID" },
-//         yaxis: { title: "Sample Values" },
-//         showlegend: false
-//     };
 
-//     Plotly.newPlot("bubbleChart", [trace], layout);
-// }
+        //make bar chart
+        let xbarData = gdp
+        let yTicks = countryList
 
-// // Function to update the sample metadata
-// function updateMetadata(sampleId, data) {
-//     var metadata = data.metadata.filter(sample => sample.id == sampleId)[0];
-//     var metadataDisplay = d3.select("#sampleMetadata");
-//     metadataDisplay.html("");
-//     Object.entries(metadata).forEach(([key, value]) => {
-//         metadataDisplay.append("p").text(`${key}: ${value}`);
-//     });
-// }
+        var barData = [{
+            type: 'bar',
+            x: xbarData.reverse(),
+            y: yTicks,
+            orientation: 'h',
+            marker: {
+                color: 'rgba(55,128,191,0.6)',
+                width: 1
+            }
+        }];
+        var layout = {
+            title: 'GDP per Country',
+            barmode: 'stack'
+        };
+
+        Plotly.newPlot('bar', barData, layout);
+
+
+        //scatter chart code
+        var trace1 = {
+            x: countryList,
+            y: alcohol,
+            name: 'Alcohol Use',
+            type: 'scatter',
+            mode: 'markers'
+        };
+
+        var trace2 = {
+            x: countryList,
+            y: drugUse,
+            name: 'Drug Use',
+            type: 'scatter',
+            mode: 'markers'
+        };
+
+        var trace3 = {
+            x: countryList,
+            y: lowActivity,
+            name: 'Low Physical Activity',
+            type: 'scatter',
+            mode: 'markers'
+        };
+
+        var trace4 = {
+            x: countryList,
+            y: highMass,
+            name: 'High Body Mass',
+            type: 'scatter',
+            mode: 'markers'
+        };
+
+        var data = [trace1, trace2, trace3, trace4];
+
+        var layout = {
+            scattermode: 'group',
+            title: 'Grouped by Country',
+            xaxis: { title: 'Country' },
+            yaxis: { title: 'GDP vs Death Risk' },
+            scattergap: 1
+        };
+
+        Plotly.newPlot('scatter', data, layout);
+
+        var trace1 = {
+            x:deathRate.slice(0,1000),
+            y: deathRisks,
+            text: countryList,
+            mode: 'markers',
+            marker: {
+                color: countryList,
+                opacity: [1, 0.8, 0.6, 0.4],
+                size: deathRate
+            }
+        };
+
+        var data = [trace1];
+
+        var layout = {
+            title: 'Death Risk to Death Rate',
+            showlegend: false,
+            height: 600,
+            width: 600
+        };
+
+        Plotly.newPlot('bubble', data, layout);
+
+
+
+
+
+
+
+
+
+
+    })
+};
