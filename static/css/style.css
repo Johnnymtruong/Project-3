@@ -1,6 +1,11 @@
 body {
   padding: 0;
   margin: 0;
+  background-color: rgb(142, 142, 143);
+}
+h1 {
+  background-color: rgb(20, 20, 20);
+  color: white;
 }
 
 #map,
@@ -13,7 +18,7 @@ html {
 .legend {
   line-height: 18px;
   color: #151414;
-  background: #ffffff;
+  background: #e34e4e;
   border: 2px solid #000;
   padding: 10px;
   margin: 10px;
@@ -21,7 +26,41 @@ html {
 .legend i {
   width: 18px;
   height: 18px;
-  float: left;
+  float: center;
   margin-right: 8px;
   opacity: 2;
+}
+
+.column {
+  float: right;
+  width: 32%;
+  color: white;
+  column-gap: 80px;
+  column-rule-width: 10px
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.header {
+  background-color: #101010;
+  padding: 20px;
+  text-align: center;
+  color: 'white';
+}
+
+.footer {
+  background-color: #545555;
+  text-align: center;
+  padding: 20px;
+  color: 'white'
+}
+
+.row::after {
+  content: "";
+  display: table;
+  clear: both;
 }

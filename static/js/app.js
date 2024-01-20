@@ -1,5 +1,6 @@
 //read in the json file
 
+
 const url = "country_gdp_death_2000.json";
 
 function main() {
@@ -70,8 +71,8 @@ function makeCharts(sample) {
         let highMass = data.map(row => row.High_body_mass_index);
 
         let deathRisks = [highSodium, lowGrains, alcohol, lowFruits, lowSeeds, lowVeggies, lowActivity, drugUse, highMass];
-            
-  
+
+
 
         console.log("this is country:", countryList);
         console.log("this is year:", year);
@@ -94,17 +95,19 @@ function makeCharts(sample) {
 
         var barData = [{
             type: 'bar',
-            x: xbarData.reverse(),
+            x: xbarData.slice(0,10).reverse(),
             y: yTicks,
             orientation: 'h',
             marker: {
                 color: 'rgba(55,128,191,0.6)',
-                width: 1
+                width: 10
             }
         }];
         var layout = {
             title: 'GDP per Country',
-            barmode: 'stack'
+            barmode: 'stack',
+            plot_bgcolor:"mistyrose",
+            paper_bgcolor:"#FFF3"
         };
 
         Plotly.newPlot('bar', barData, layout);
@@ -149,19 +152,43 @@ function makeCharts(sample) {
             scattermode: 'group',
             title: 'Grouped by Country',
             xaxis: { title: 'Country' },
-            yaxis: { title: 'GDP vs Death Risk' },
-            scattergap: 1
+            yaxis: { title: 'Country Death Rates by Cause' },
+            scattergap: 1,
+            plot_bgcolor:"mistyrose",
+            paper_bgcolor:"#FFF3",
+            color:'white'
+
         };
 
         Plotly.newPlot('scatter', data, layout);
 
+        //bubble chart
         var trace1 = {
-            x:deathRate.slice(0,1000),
+            x: gdp,
             y: deathRisks,
+            name: 'Death Risks by GDP',
             text: countryList,
             mode: 'markers',
             marker: {
-                color: countryList,
+                color: ['rgb(166,206,227)', 'rgb(31,120,180)','rgb(178,223,138)','rgb(51,160,44)','rgb(251,154,153)', 'rgb(227,26,28)',
+                'rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)','gold', 'goldenrod', 'gray', 'grey', 'green',
+                'greenyellow', 'honeydew', 'hotpink', 'indianred', 'indigo','ivory', 'khaki', 'lavender', 'lavenderblush', 'lawngreen',
+                'lemonchiffon', 'lightblue', 'lightcoral', 'lightcyan','lightgoldenrodyellow','lightgray', 'lightgrey',
+                'lightgreen', 'lightpink', 'lightsalmon', 'lightseagreen','lightskyblue', 'lightslategray', 'lightslategrey',
+                'lightsteelblue', 'lightyellow', 'lime', 'limegreen','linen', 'magenta', 'maroon', 'mediumaquamarine',
+                'mediumblue', 'mediumorchid', 'mediumpurple','mediumseagreen', 'mediumslateblue', 'mediumspringgreen',
+                'mediumturquoise', 'mediumvioletred', 'midnightblue','mintcream', 'mistyrose', 'moccasin', 'navajowhite', 'navy',
+                'oldlace', 'olive', 'olivedrab', 'orange', 'orangered','orchid', 'palegoldenrod', 'palegreen', 'paleturquoise',
+                'palevioletred', 'papayawhip', 'peachpuff', 'peru', 'pink','plum', 'powderblue', 'purple', 'red', 'rosybrown',
+                'royalblue', 'saddlebrown', 'salmon', 'sandybrown','seagreen', 'seashell', 'sienna', 'silver', 'skyblue',
+                'slateblue', 'slategray', 'slategrey', 'snow', 'springgreen', 'steelblue', 'tan', 'teal', 'thistle', 'tomato', 'turquoise',
+                'violet', 'wheat', 'white', 'whitesmoke', 'yellow', 'aliceblue', 'antiquewhite', 'aqua', 'aquamarine', 'azure',
+                'beige', 'bisque', 'black', 'blanchedalmond', 'blue','blueviolet', 'brown', 'burlywood', 'cadetblue',
+                'chartreuse', 'chocolate', 'coral', 'cornflowerblue','cornsilk', 'crimson', 'cyan', 'darkblue', 'darkcyan',
+                'darkgoldenrod', 'darkgray', 'darkgrey', 'darkgreen','darkkhaki', 'darkmagenta', 'darkolivegreen', 'darkorange',
+                'darkorchid', 'darkred', 'darksalmon', 'darkseagreen','darkslateblue', 'darkslategray', 'darkslategrey','darkturquoise',
+                'darkviolet', 'deeppink', 'deepskyblue','dimgray', 'dimgrey', 'dodgerblue', 'firebrick',
+                'floralwhite', 'forestgreen', 'fuchsia', 'gainsboro','ghostwhite'],
                 opacity: [1, 0.8, 0.6, 0.4],
                 size: deathRate
             }
@@ -170,20 +197,16 @@ function makeCharts(sample) {
         var data = [trace1];
 
         var layout = {
-            title: 'Death Risk to Death Rate',
-            showlegend: false,
-            height: 600,
-            width: 600
+            title: 'Death Rate per GDP',
+            showlegend: true,
+            height: 700,
+            width: 1200,
+            plot_bgcolor:"mistyrose",
+            paper_bgcolor:"#FFF3"
+            
         };
 
         Plotly.newPlot('bubble', data, layout);
-
-
-
-
-
-
-
 
 
 
