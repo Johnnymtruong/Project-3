@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Project_3</title>
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin="" />
-
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <title>Mortality Mosaic: A Global Study</title>
+    <style>
+        body {
+            background: url('data:image/jpeg;base64,[ENCODED_IMAGE]') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+        h2, h3 {
+            color: #f2f2f2;
+        }
+        a {
+            color: #9df9ef;
+        }
+        a:hover {
+            color: rgb(62, 39, 100);
+        }
+    </style>
 </head>
-
 <body>
-
-  <!-- The div that holds our map -->
-  <div id="map" style="height: 600px;"></div>
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-  <!-- D3 JavaScript -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <!-- Our JavaScript -->
-  <script type="text/javascript" src="static/js/logic.js"></script>
+    <nav class="container-fluid">
+        <ul>
+            <li><strong>Mortality Mosaic</strong></li>
+        </ul>
+        <ul>
+            <li><a href="hypothesis1.html">Jessica - Hypothesis 1</a></li>
+            <li><a href="hypothesis2.html">Ryan - Hypothesis 2</a></li>
+            <li><a href="hypothesis3.html">Johnny - Hypothesis 3</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <div class="grid">
+            <section>
+                <hgroup>
+                    <h2>Welcome to Mortality Mosaic</h2>
+                    <h3>A Global Study of Risk Factors and Economic Indicators</h3>
+                </hgroup>
+                <p>This project explores the intricate relationships between mortality rates, risk factors, and economic indicators across the globe. Our team consists of Jessica, Ryan, and Johnny and we were driven to uncover patterns and correlations in worldwide health trends.</p>
+                <figure>
+                    <img src="https://source.unsplash.com/random?global" alt="Global Study" />
+                    <figcaption><a href="https://unsplash.com" target="_blank">Image Source</a></figcaption>
+                </figure>
+                <h3>Why This Topic?</h3>
+                <p>We chose this topic to understand how different economic indicators and risk factors influence mortality rates worldwide. By studying these relationships, we aim to provide insights that can aid in global health improvement strategies.</p>
+            </section>
+        </div>
+    </main>
+    <footer class="container">
+        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Use</a></small>
+    </footer>
 </body>
-
 </html>
