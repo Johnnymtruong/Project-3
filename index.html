@@ -17,20 +17,23 @@
   <div class="header">
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
-        <h1>Country GDP Death Data of 2000</h1>
-        <p>Use the interactive charts below to explore the dataset</p>
+        <h1>Country GDP Death Data of 2000 <br> Use the interactive charts below to explore the dataset</h1>
       </div>
     </div>
   </div>
   <div class="column">
-    <div class="panel panel-primary">
-      <div class="panel-heading">
-        <h3 class="panel-title">Death Rate & Risk Info</h3>
+    <div class="col-md-2">
+      <div class="well">
+        <h5>Country ID No.:</h5>
+        <select id="selDataset" onchange="optionChanged(this.value)"></select>
       </div>
-      <h5>Country Name</h5>
-      <select id="selDataset" onchange="optionChanged(this.value)"></select>
-    </div>
-    <div id="sample-data" class="panel-body"></div>
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Country Death Rate Info</h3>
+        </div>
+        <div id="sample-data" class="panel-body"></div>
+      </div>
+    </div>le-data" class="panel-body"></div>
   </div>
   <div class="column">
     <h1>What do the death risks look like?</h1>
@@ -38,7 +41,7 @@
       style="background-image: url('http://llw-magento-images-prod.s3.amazonaws.com/catalog/product/f/o/fo-map-94585280_1667x1000.jpg');">
       GDP is defined as the "economic metric that breaks down a country's economic output per person"
       (Investopedia.com).<br><br>
-      According to the World Banke of Data, "The crude death rate is calculated as the number of deaths in a given
+      According to the World Bank of Data, "The crude death rate is calculated as the number of deaths in a given
       period
       divided by the population exposed to risk of death in that period."<br><br> We will look at overall Death Rate per
       country based

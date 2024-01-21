@@ -15,7 +15,7 @@ function main() {
 
         };
         //testing the data reference
-        console.log(data[0].Country_name);
+        console.log(random[0].Country_name);
 
         let firstItem = random[0].ID;
         makeCharts(firstItem);
@@ -96,7 +96,7 @@ function makeCharts(sample) {
 
 
         //make bar chart
-        let xbarData = gdp.slice(0,10).reverse();
+        let xbarData = gdp;
         let yTicks = countryList;
 
         var barData = [{
