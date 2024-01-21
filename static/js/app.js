@@ -24,11 +24,10 @@ function main() {
     });
     };
     function optionChanged(subject) {
+    
         makeCharts(subject);
         hugeData(subject);
-        console.log(subject);
-
-    };
+        console.log(subject);}
 
 main();
 
