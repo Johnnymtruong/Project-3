@@ -4,59 +4,65 @@
 const url = "country_gdp_death_2000.json";
 
 function main() {
-
     let dropdownMenu = d3.select("#selDataset")
 
     // Fetch the JSON data and console log iC
-    d3.json(url).then(function (data) {
+    d3.json(url).then(function(data) {
         console.log(data);
         let random = data
         for (let i = 0; i < random.length; i++) {
-            dropdownMenu.append("option").text(random[i].Country_name).property("value", random[i].ID);
+            dropdownMenu.append("option").text(random[i].ID).property("value", random[i].ID);
 
         };
         //testing the data reference
         console.log(data[0].Country_name);
 
-        let firstItem = random[0];
+        let firstItem = random[0].ID;
         makeCharts(firstItem);
         hugeData(firstItem);
+
     });
-};
+    };
+    function optionChanged(subject) {
+        makeCharts(subject);
+        hugeData(subject);
+        console.log(subject);
 
-function optionChanged(subject) {
-    makeCharts(subject);
-    hugeData(subject);
-    console.log(subject);
+    };
 
-
-};
+main();
 
 //set function to update the drop down menu and its data
 function hugeData(sample) {
-    d3.json(url).then(function (data) {
+    d3.json(url).then(function(data) {
         let majordata = data
         let data1 = majordata.filter(obj => obj.ID == sample);
         let dataResult = data1[0];
         let panel = d3.select("#sample-data");
-        panel.html("");
-        for (key in dataResult) {
-            panel.append("h6").text(`${key.toUpperCase()}: ${dataResult[key]}`)
+    panel.html("");
+    for (key in dataResult) {
+        panel.append("h6").text(`${key.toUpperCase()}: ${dataResult[key]}`)
 
         }
     })
 };
 
 
-
-main();
-
 function makeCharts(sample) {
-    d3.json(url).then(function (data) {
+    d3.json(url).then(function(data) {
+        
+        let majordata = data
+        let dataArray= majordata.filter(obj => obj.ID == sample);
+        let dataResult = dataArray[0];
+       
+        console.log(dataResult);
+        console.log(dataArray);
+
+        
+        let country = dataResult.Country_name;
+        let countryList = data.map(row => row.Country_name);
         // data = [{},{},{}];
         //.map function
-
-        let countryList = data.map(row => row.Country_name);
         let year = data.map(row => row.Year);
         let gdp = data.map(row => row.GDP_per_capita);
         let deathRate = data.map(row => row.Death_rate);
@@ -74,7 +80,7 @@ function makeCharts(sample) {
 
 
 
-        console.log("this is country:", countryList);
+        console.log("this is country:", country);
         console.log("this is year:", year);
         console.log("this is GDP:", gdp);
         console.log("this is Death Rate:", deathRate);
@@ -90,12 +96,12 @@ function makeCharts(sample) {
 
 
         //make bar chart
-        let xbarData = gdp
-        let yTicks = countryList
+        let xbarData = gdp.slice(0,10).reverse();
+        let yTicks = countryList;
 
         var barData = [{
             type: 'bar',
-            x: xbarData.slice(0,10).reverse(),
+            x: xbarData,
             y: yTicks,
             orientation: 'h',
             marker: {
