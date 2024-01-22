@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Air Pollution and Health Impact Map</title>
+    <meta charset="UTF-8">
+    <title>Map and Graph Visualization</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
-        #map { height: 600px; }
+        #map { height: 400px; }
+        #graph { height: 400px; }
+        .legend {
+            padding: 6px 8px;
+            font: 14px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+            line-height: 24px;
+        }
+        .legend h4 {
+            text-align: center;
+            font-size: 16px;
+            margin: 2px 12px 8px;
+            color: #777;
+        }
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin: 0 8px 0 0;
+            opacity: 0.7;
+        }
+        header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Roboto', sans-serif; /* Applying the Roboto font */
+        }
     </style>
 </head>
 <body>
+    <header>In regions with higher populations, the correlation between outdoor air pollution and respiratory disease-related deaths is stronger.</header>
+    <div id="title">Air Pollution and Health Impact Map</div>
     <div id="map"></div>
+    <div id="graph"></div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="Air_Pollution.js"></script>
 </body>
