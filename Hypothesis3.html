@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Project</title>
+    <style>
+      .chart-container {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        gap: 20px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="data-container">
+      <!-- Your data will be displayed here -->
+      <h5>Country:</h5>
+      <select id="selCountry"></select>
+    </div>
+    <div id="sample-data" class="panel-body"></div>
+    <div id="data-container2"></div>
+    <h5>Year:</h5>
+    <select id="selYear"></select>
+
+    <div id="sample-data2" class="panel-body"></div>
+
+    <div id="map"></div>
+
+    <div class="chart-container">
+      <div id="bar-chart" style="width: 100%"></div>
+      <div id="bubble" style="width: 100%"></div>
+    </div>
+
+    <div id="tooltip"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
