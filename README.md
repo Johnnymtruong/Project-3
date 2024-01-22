@@ -27,17 +27,28 @@ Standardized Mortality Ratio. Department of Health. 2024. https://www.health.pa.
 
 Ryan Joseph:
 Leaflet.js
+
 Purpose: Used for creating interactive maps.
+
 Website: Leaflet - an open-source JavaScript library for interactive maps
+
 Description: Leaflet is a leading open-source JavaScript library for mobile-friendly interactive maps. It is designed with simplicity, performance, and usability in mind.
+
 Plotly.js
+
 Purpose: Used for creating interactive data visualizations.
+
 Website: Plotly JavaScript Open Source Graphing Library
+
 Description: Plotly.js is a high-level, declarative charting library built on top of d3.js and stack.gl. It is used to create interactive and versatile visualizations in the browser.
 OpenStreetMap
+
 Purpose: Provided the map tiles for the Leaflet map.
+
 Website: OpenStreetMap
+
 Description: OpenStreetMap is a map of the world, created by people like you and free to use under an open license. It provides freely accessible and editable geographic data.
+
 Johnny Truong:
 
 
