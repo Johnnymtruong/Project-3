@@ -1,7 +1,7 @@
 # Project-3 Overview:
 Every country has different risk factors and death rates that affect their economic wellbeing. The purpose of this project is to analyze the different types of recorded death rates, risk factors, and compare them in a broad scope to determine where certain factors range within a comparable number across different economic climates. An extensive and overall broad dataset that shows over 30 factors of death and risk factors, alongside recorded death instances throughout the globe would mean that we can create extensive visualizations and comparisons between regions/countries to determine which factors affect some areas more than others.	We have also pulled data for GDP Per Capita and Population demographics to determine how high the death rates are based on death causes and risks. This project will show in user-friendly, interactive visualizations the story of the data we have gathered today. 
 
- References:			
+ Dataset References:			
  
  Saloni Dattani, Fiona Spooner, Hannah Ritchie and Max Roser (2023) - “Causes of Death” Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/causes-of-death' [Online Resource]
  
@@ -25,6 +25,10 @@ Metadata Glossary. The World Data Bank. 2024. https://databank.worldbank.org/met
 
 Standardized Mortality Ratio. Department of Health. 2024. https://www.health.pa.gov/topics/HealthStatistics/Statistical-Resources/UnderstandingHealthStats/Pages/Standardized-Mortality-Ratio.aspx#:~:text=A%20ratio%20greater%20than%201.0,fraction%20shows%20the%20percentage%20comparison.
 
+Ryan Joseph:
+
+
+Johnny Truong:
 
 
 
