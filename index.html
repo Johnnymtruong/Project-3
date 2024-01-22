@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,20 +10,36 @@
             background: url('https://images.pexels.com/photos/1096925/pexels-photo-1096925.jpeg') no-repeat center center fixed;
             background-size: cover;
             color: rgb(159, 27, 27);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Improved font readability */
         }
         h2, h3 {
             color: #cd2121;
+            text-shadow: 2px 2px 4px #000; /* Adding text shadow for titles */
         }
         a {
             color: #c41f1f;
+            text-decoration: none; /* Optional: Removes underline from links */
         }
         a:hover {
             color: rgb(243, 235, 235);
+            text-decoration: underline; /* Optional: Underlines links on hover */
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for the container */
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners for the container */
+        }
+        img {
+            max-width: 100%; /* Makes sure the image is not larger than its container */
+            height: auto; /* Keeps the image aspect ratio */
+        }
+        figure {
+            margin: 20px 0; /* Adds spacing around the figure element */
         }
     </style>
 </head>
 <body>
-    <nav class="container-fluid">
+    <nav class="container-fluid" style="background-color: #000; color: #fff; padding: 10px 0;">
         <ul>
             <li><strong>Mortality Mosaic</strong></li>
         </ul>
@@ -44,8 +60,10 @@
                     indicators across the globe. Our team consists of Jessica, Ryan, and Johnny and we were driven to uncover 
                     patterns and correlations in worldwide health trends.</p>
                 <figure>
-                    <img src="https://i.ytimg.com/vi/ONhfy_40zA8/maxresdefault.jpg" />
-                    <h3>Why This Topic?</h3>
+                    <img src="https://i.ytimg.com/vi/ONhfy_40zA8/maxresdefault.jpg" alt="Visualization of data"/>
+                    <figcaption></figcaption>
+                </figure>
+                <h3>Why This Topic?</h3>
                 <p>We chose this topic to understand how different economic indicators and risk factors influence mortality 
                     rates worldwide. By studying these relationships, we aim to provide insights that can aid in global health improvement strategies.</p>
             </section>
@@ -56,7 +74,4 @@
     </footer>
 </body>
 </html>
-    </footer>
->>>>>>> a7173ea30ad12260d93e196c98b0e4d4ef37b0f8
-</body>
-</html>
+
