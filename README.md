@@ -77,7 +77,7 @@ https://d3js.org/
 	
  D3. js works with modern web browsers and standards, such as HTML, CSS, and SVG. It does not require any external plugins or frameworks, and it can handle large and dynamic data sets efficiently. It also supports responsive design, which means your visualizations can adapt to different screen sizes and devices.
 
-  "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/world.geojson";
+  https://geojson.org/
 
 Purpose: Navigate visuals that shows the data about countries with unsafe water source which displays the deathrates of unsafe water source and unsanitation
 
