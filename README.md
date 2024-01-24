@@ -24,7 +24,13 @@ Every country has different risk factors and death rates that affect their econo
 The goal was to maintain the integrity of the datasets provided, while ensuring we had a full database that would accomodate the possible difference between each set. ID's were allocated based on Country Name and Year to create readable, callable object for our software to utilize. All data was sourced from an organization credited for maintaining data inegrity and knowledgeable data points. The datapoints shown in visualizations are to be intact based on their unique identifiers. No numbers have been altered, and any calculations that have been made are part of an analysis process that is exploratoty in nature, utilized for research purposes, and done so without bias or assumption. 
 
 # Data Analysis 
+There are four datasets downloaded from the World Bank or Data for analysis, "Death Risks," "GDP per Capita worldwide," "Death Rates," and "Population Demographics." These three datasets were then put into a jupyter notebook for data cleanup and preparation in visualizations. Extra information had been transferred during the csv downloads, such as extra column information, graph labels misplaced, and unclear column names. Each file was trimmed of excess rows that contained "region" and grouped info that had no true indication which country was which. The ultimate goal was to look at the datapoints at the country level, so the cleaned datasets held only the country information. All three datasets were then downloaded as cleaned csv's and jsonified for transfer to the POstgres SQL database. An id table was also utilized to link each dataset based on Country name and year the data was recorded. In the database, the datasets were combined into three versions: 
 
+1) Countries grouped by GDP per Capita, death rates, and select death risks.
+2) Countries grouped by air pollution and associated death rates/risks.
+3) Countries grouped by unsafe water and death risks associated with waterborne diseases.
+
+Each of these SQL populated datasets had no blank rows or null values. These were then assigned to each individual for additional analysis and hypothesis testing. 
 
  # Dataset References:			
  
@@ -33,6 +39,8 @@ The goal was to maintain the integrity of the datasets provided, while ensuring 
 Max Roser, Pablo Arriagada, Joe Hasell, Hannah Ritchie and Esteban Ortiz-Ospina (2023) - “Economic Growth” Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/economic-growth' [Online Resource]
 
 Hannah Ritchie, Lucas Rodés-Guirao, Edouard Mathieu, Marcel Gerber, Esteban Ortiz-Ospina, Joe Hasell and Max Roser (2023) - "Population Growth". Published online at OurWorldInData.org. Retrieved from: 'https://ourworldindata.org/population-growth' [Online Resource]
+
+Annual death rate from all causes, 1990 to 2019. Institute for Health Metrics and Evaluation, Global Burden of Disease (2019) – processed by Our World in Data. “Deaths - All causes - Sex: Both - Age: Age-standardized (Rate)” [dataset]. Institute for Health Metrics and Evaluation, Global Burden of Disease (2019) [original data]. 
 
 
 # Code References:
